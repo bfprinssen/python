@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Golfscore Invoeren</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #f8f8f8;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Voer je golfscore in</h2>
+
+  <form method="post" action="/verwerk-score">
+    <label for="url">URL van de golfbaan:</label>
+    <input type="url" id="url" name="url" placeholder="https://www.top100golfcourses.com/golf-course/..." required>
+
+    <label for="hole">Hole nummer (1-18):</label>
+    <select id="hole" name="hole">
+      <!-- Genereer 1 t/m 18 -->
+      <script>
+        for (let i = 1; i <= 18; i++) {
+          document.write(`<option value="${i}">${i}</option>`);
+        }
+      </script>
+    </select>
+
+    <label for="score">Aantal slagen:</label>
+    <input type="number" id="score" name="score" min="1" max="20" required>
+
+    <button type="submit">Verstuur</button>
+  </form>
+
+</body>
+</html>
